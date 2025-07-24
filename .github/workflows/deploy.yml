@@ -3,7 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # or 'master' if that's your branch
+      - main
+
+permissions:
+  contents: write  # 👈 give github-actions[bot] permission to push
 
 jobs:
   build-and-deploy:
