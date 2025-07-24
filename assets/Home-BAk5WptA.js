@@ -1,0 +1,1 @@
+import{j as e}from"./index-DEiTQyln.js";function t(){return e.jsxs("div",{style:{paddingTop:"60px"},children:[e.jsx("h1",{children:"Home"}),e.jsx("p",{children:"Welcome to the home page!"})]})}export{t as default};
