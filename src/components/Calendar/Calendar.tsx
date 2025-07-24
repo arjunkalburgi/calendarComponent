@@ -1,14 +1,33 @@
+import { generateCalendarWeeks, type CalendarCell } from "./calendarUtls";
 import styles from "./Calendar.module.css";
+import DateBox from "./DateBox/DateBox";
 
 type CalendarProps = {
     date: Date;
 };
 
-export default function Calendar({ date = new Date() }: CalendarProps) {
-    const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+export default function Calendar({ date }: CalendarProps) {
+    const weeks = generateCalendarWeeks(date.getFullYear(), date.getMonth());
+    
     return (
-        <div style={{ paddingTop: "60px" }}>
-            <h1>{monthNames[date.getMonth()]} {date.getFullYear()}</h1>
+        <div>
+            <h1>
+                {date.toLocaleString("default", { month: "long" })} {date.getFullYear()}
+            </h1>
+            <div className={styles.calendar}>
+                {weeks.map((week: CalendarCell[], i: number) => (
+                    <div key={i} className={styles.weekRow}>
+                        {week.map((cell, j) => (
+                            <DateBox
+                                key={`${i}-${j}`}
+                                date={cell.date}
+                                isInactive={cell.isInactive}
+                                isToday={cell.isToday}
+                            />
+                        ))}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
