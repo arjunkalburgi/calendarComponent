@@ -1,8 +1,11 @@
+import { useState } from "react";
+import Calendar from "../components/Calendar/Calendar";
+
 export default function Home() {
+    const [date] = useState(new Date());
     return (
         <div style={{ paddingTop: "60px" }}>
-        <h1>Home</h1>
-        <p>Welcome to the home page!</p>
+            <Calendar date={date} />
         </div>
     );
 }
