@@ -1,12 +1,13 @@
 import { useState } from "react";
 import Calendar from "../components/Calendar/Calendar";
+import MoonBox from "../components/MoonBox/MoonBox";
 
-export default function Home() {
+export default function Moon() {
     const [date, setDate] = useState(new Date());
     
     return (
         <div style={{ paddingTop: "60px" }}>
-            <h1>Default Calendar</h1>
+            <h1>Phases of the NYC Moon</h1>
         
             {/* ✅ Simple month-day picker */}
             <div>
@@ -30,7 +31,16 @@ export default function Home() {
                 />
             </div>
         
-            <Calendar date={date} />
+            <Calendar 
+                date={date} 
+                renderDateBox={(cell) => (
+                    <MoonBox
+                        date={cell.date}
+                        isInactive={cell.isInactive}
+                        isToday={cell.isToday}
+                    />
+                )}
+            />
         </div>
     );
 }

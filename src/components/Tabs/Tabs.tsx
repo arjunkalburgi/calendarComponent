@@ -7,8 +7,8 @@ export default function Tabs() {
       <NavLink to="/" className={({ isActive }) => isActive ? "tab active" : "tab"}>
         Home
       </NavLink>
-      <NavLink to="/desc" className={({ isActive }) => isActive ? "tab active" : "tab"}>
-        Desc
+      <NavLink to="/moon" className={({ isActive }) => isActive ? "tab active" : "tab"}>
+        Moon
       </NavLink>
     </div>
   );

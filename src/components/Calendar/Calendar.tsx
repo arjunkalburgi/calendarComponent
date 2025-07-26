@@ -4,9 +4,10 @@ import DateBox from "./DateBox/DateBox";
 
 type CalendarProps = {
     date: Date;
+    renderDateBox?: (cell: CalendarCell) => React.ReactNode;
 };
 
-export default function Calendar({ date }: CalendarProps) {
+export default function Calendar({ date, renderDateBox }: CalendarProps) {
     const weeks = generateCalendarWeeks(date.getFullYear(), date.getMonth());
     
     return (
@@ -17,7 +18,9 @@ export default function Calendar({ date }: CalendarProps) {
             <div className={styles.calendar}>
                 {weeks.map((week: CalendarCell[], i: number) => (
                     <div key={i} className={styles.weekRow}>
-                        {week.map((cell, j) => (
+                        {week.map((cell, j) => renderDateBox ? (
+                            renderDateBox(cell)
+                        ) : (
                             <DateBox
                                 key={`${i}-${j}`}
                                 date={cell.date}
