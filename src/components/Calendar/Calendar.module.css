@@ -1,8 +1,11 @@
+.calendarContainer {
+    text-align: start;
+}
+
 .calendar {
     display: flex;
     flex-direction: column;
     gap: 6px; /* space between week rows */
-    max-width: 320px; /* keeps a nice compact calendar size */
     margin-top: 10px;
 }
 

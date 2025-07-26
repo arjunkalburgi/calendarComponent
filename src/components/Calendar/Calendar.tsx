@@ -10,10 +10,10 @@ export default function Calendar({ date }: CalendarProps) {
     const weeks = generateCalendarWeeks(date.getFullYear(), date.getMonth());
     
     return (
-        <div>
-            <h1>
+        <div className={styles.calendarContainer}>
+            <h2>
                 {date.toLocaleString("default", { month: "long" })} {date.getFullYear()}
-            </h1>
+            </h2>
             <div className={styles.calendar}>
                 {weeks.map((week: CalendarCell[], i: number) => (
                     <div key={i} className={styles.weekRow}>
