@@ -1,23 +1,25 @@
-import { getMoonPhase } from "./moonUtls";
+import { getMoonPhase, MoonPhaseSvgs } from "./moonUtls";
+import styles from "./MoonBox.module.css";
 
 type DateBoxProps = {
-    date: Date | null;
+    date: Date;
     isInactive: boolean;
     isToday: boolean;
 };
 
 export default function DateBox({ date, isInactive, isToday }: DateBoxProps) {
+    const phase = getMoonPhase(date);
+    const svg = MoonPhaseSvgs[phase];
+
     return (
         <div
+            className={styles.moonBoxContainer}
             style={{
-                border: "1px solid #ccc",
-                padding: "10px",
-                textAlign: "center",
-                background: isInactive ? "#f5f5f5" : isToday ? "#dfffd6" : "white",
+                background: isInactive ? "#e2e2e2ff" : isToday ? "#dfffd6" : "white",
             }}
         >
             {date ? date.getDate() : ""}
-            {getMoonPhase(new Date("2025-03-10T14:00:00-05:00"))}
+            {svg}
         </div>
     );
 }

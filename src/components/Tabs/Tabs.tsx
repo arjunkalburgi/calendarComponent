@@ -5,7 +5,7 @@ export default function Tabs() {
   return (
     <div className="tabs">
       <NavLink to="/" className={({ isActive }) => isActive ? "tab active" : "tab"}>
-        Home
+        Default
       </NavLink>
       <NavLink to="/moon" className={({ isActive }) => isActive ? "tab active" : "tab"}>
         Moon
