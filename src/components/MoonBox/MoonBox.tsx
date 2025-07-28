@@ -5,9 +5,11 @@ type MoonBoxProps = {
     date: Date;
     isInactive: boolean;
     isToday: boolean;
+    descriptionId?: string;
 };
 
-export default function MoonBox({ date, isInactive, isToday }: MoonBoxProps) {
+export default function MoonBox({ date, isInactive, isToday, descriptionId }: MoonBoxProps) {
+    const phase = getMoonPhase(date);
     const isPast = date < new Date();
     return (
         <div
@@ -20,7 +22,12 @@ export default function MoonBox({ date, isInactive, isToday }: MoonBoxProps) {
             {!isInactive && (
                 <>
                     {date ? date.getDate() : ""}
-                    {MoonPhaseSvgs[getMoonPhase(date)]}
+                    <span aria-hidden="true">{MoonPhaseSvgs[phase]}</span>
+                    {descriptionId && (
+                        <p id={descriptionId} className={styles.visuallyHidden}>
+                            Moon phase: {phase}
+                        </p>
+                    )}
                 </>
             )}
         </div>

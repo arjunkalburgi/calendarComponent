@@ -23,11 +23,12 @@ export default function Moon() {
         
             <Calendar 
                 date={date} 
-                renderDateBox={(cell) => (
+                renderDateBox={(cell, descriptionId) => (
                     <MoonBox
                         date={cell.date}
                         isInactive={cell.isInactive}
                         isToday={cell.isToday}
+                        descriptionId={descriptionId}
                     />
                 )}
             />

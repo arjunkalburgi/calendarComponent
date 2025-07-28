@@ -2,6 +2,7 @@ type DateBoxProps = {
     date: Date | null;
     isInactive: boolean;
     isToday: boolean;
+    descriptionId: string;
 };
 
 export default function DateBox({ date, isInactive, isToday }: DateBoxProps) {
@@ -14,6 +15,7 @@ export default function DateBox({ date, isInactive, isToday }: DateBoxProps) {
                 textAlign: "center",
                 background: isInactive ? "#b4b4b4" : isToday ? "#dfffd6" : isPast ? "#efefef" : "white",
             }}
+            aria-hidden="true"
         >
             {date ? date.getDate() : ""}
         </div>

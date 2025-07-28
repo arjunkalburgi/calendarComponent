@@ -1,14 +1,14 @@
 import type { JSX } from "react";
 
 export type MoonPhaseKey =
-| "new_moon"
-| "waxing_crescent"
-| "first_quarter"
-| "waxing_gibbous"
-| "full_moon"
-| "waning_gibbous"
-| "last_quarter"
-| "waning_crescent";
+| "new moon"
+| "waxing crescent"
+| "first quarter"
+| "waxing gibbous"
+| "full moon"
+| "waning gibbous"
+| "last quarter"
+| "waning crescent";
 
 export function getMoonPhase(date: Date = new Date()): MoonPhaseKey {
     // Constants
@@ -25,25 +25,25 @@ export function getMoonPhase(date: Date = new Date()): MoonPhaseKey {
     const moonAge = ((daysSinceRef % SYNODIC_MONTH) + SYNODIC_MONTH) % SYNODIC_MONTH;
     
     // Map moon age to discrete phase
-    if (moonAge < 1.0) return "new_moon";
-    if (moonAge < 6.99) return "waxing_crescent";
-    if (moonAge < 8.99) return "first_quarter";
-    if (moonAge < 13.99) return "waxing_gibbous";
-    if (moonAge < 15.99) return "full_moon";
-    if (moonAge < 20.99) return "waning_gibbous";
-    if (moonAge < 22.99) return "last_quarter";
-    if (moonAge < 28.99) return "waning_crescent";
-    return "new_moon";
+    if (moonAge < 1.0) return "new moon";
+    if (moonAge < 6.99) return "waxing crescent";
+    if (moonAge < 8.99) return "first quarter";
+    if (moonAge < 13.99) return "waxing gibbous";
+    if (moonAge < 15.99) return "full moon";
+    if (moonAge < 20.99) return "waning gibbous";
+    if (moonAge < 22.99) return "last quarter";
+    if (moonAge < 28.99) return "waning crescent";
+    return "new moon";
 }
 
 export const MoonPhaseSvgs: Record<MoonPhaseKey, JSX.Element> = {
-    new_moon: (
-        <svg width="24" height="24" viewBox="0 0 48 48">
+    "new moon": (
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 48 48">
             <circle cx="24" cy="24" r="20" fill="black" stroke="black" strokeWidth="2" />
         </svg>
     ),
-    waxing_crescent: (
-        <svg width="24" height="24" viewBox="0 0 48 48">
+    "waxing crescent": (
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 48 48">
             <circle cx="24" cy="24" r="20" fill="transparent" stroke="black" strokeWidth="2" />
             <path
                 d="M24 4
@@ -53,8 +53,8 @@ export const MoonPhaseSvgs: Record<MoonPhaseKey, JSX.Element> = {
             />
         </svg>
     ),
-    first_quarter: (
-        <svg width="24" height="24" viewBox="0 0 48 48">
+    "first quarter": (
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 48 48">
             <circle cx="24" cy="24" r="20" fill="transparent" stroke="black" strokeWidth="2" />
             <path
                 d="M24 4
@@ -64,8 +64,8 @@ export const MoonPhaseSvgs: Record<MoonPhaseKey, JSX.Element> = {
             />
         </svg>
     ),
-    waxing_gibbous: (
-        <svg width="24" height="24" viewBox="0 0 48 48">
+    "waxing gibbous": (
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 48 48">
             <circle cx="24" cy="24" r="20" fill="transparent" stroke="black" strokeWidth="2" />
             <path
                 d="M24 4
@@ -75,13 +75,13 @@ export const MoonPhaseSvgs: Record<MoonPhaseKey, JSX.Element> = {
             />
         </svg>
     ),
-    full_moon: (
-        <svg width="24" height="24" viewBox="0 0 48 48">
+    "full moon": (
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 48 48">
             <circle cx="24" cy="24" r="20" fill="transparent" stroke="black" strokeWidth="2" />
         </svg>
     ),
-    waning_gibbous: (
-        <svg width="24" height="24" viewBox="0 0 48 48">
+    "waning gibbous": (
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 48 48">
             <circle cx="24" cy="24" r="20" fill="transparent" stroke="black" strokeWidth="2" />
             <path
                 d="M24 4
@@ -91,8 +91,8 @@ export const MoonPhaseSvgs: Record<MoonPhaseKey, JSX.Element> = {
             />
         </svg>
     ),
-    last_quarter: (
-        <svg width="24" height="24" viewBox="0 0 48 48">
+    "last quarter": (
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 48 48">
             <circle cx="24" cy="24" r="20" fill="transparent" stroke="black" strokeWidth="2" />
             <path
                 d="M24 4
@@ -102,8 +102,8 @@ export const MoonPhaseSvgs: Record<MoonPhaseKey, JSX.Element> = {
             />
         </svg>
     ),
-    waning_crescent: (
-        <svg width="24" height="24" viewBox="0 0 48 48">
+    "waning crescent": (
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 48 48">
             <circle cx="24" cy="24" r="20" fill="transparent" stroke="black" strokeWidth="2" />
             <path
                 d="M24 4
