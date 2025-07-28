@@ -8,7 +8,7 @@ export default function Home() {
         <div style={{ paddingTop: "60px" }}>
             <h1>Default Calendar</h1>
         
-            <div>
+            <div style={{ marginBottom: "60px" }}>
                 <span>For the month: </span>
                 <input
                     type="month"

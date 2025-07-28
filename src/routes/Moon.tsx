@@ -9,7 +9,7 @@ export default function Moon() {
         <div style={{ paddingTop: "60px" }}>
             <h1>Phases of the NYC Moon</h1>
         
-            <div>
+            <div style={{ marginBottom: "60px" }}>
                 <span>For the month: </span>
                 <input
                     type="month"

@@ -31,13 +31,13 @@ export default function Calendar({ date, onChangeDate, renderDateBox }: Calendar
         <div className={styles.calendarContainer}>
             <div className={styles.calendarHeader}>
                 <button onClick={goToPrevMonth} aria-label="Previous month">
-                    &lt;
+                    ←
                 </button>
                 <h2 aria-live="polite">
                     {date.toLocaleString("default", { month: "long" })} {date.getFullYear()}
                 </h2>
                 <button onClick={goToNextMonth} aria-label="Next month">
-                    &gt;
+                    →
                 </button>
                 <button onClick={goToToday} className={styles.todayButton} aria-label="Go to set month">
                     Today
