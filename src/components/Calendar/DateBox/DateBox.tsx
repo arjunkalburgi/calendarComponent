@@ -5,13 +5,14 @@ type DateBoxProps = {
 };
 
 export default function DateBox({ date, isInactive, isToday }: DateBoxProps) {
+    const isPast = date && date < new Date();
     return (
         <div
             style={{
                 border: "1px solid #ccc",
                 padding: "10px",
                 textAlign: "center",
-                background: isInactive ? "#f5f5f5" : isToday ? "#dfffd6" : "white",
+                background: isInactive ? "#b4b4b4" : isToday ? "#dfffd6" : isPast ? "#efefef" : "white",
             }}
         >
             {date ? date.getDate() : ""}
