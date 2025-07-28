@@ -13,11 +13,12 @@ export default function DateBox({ date, isInactive, isToday }: DateBoxProps) {
                 border: "1px solid #ccc",
                 padding: "10px",
                 textAlign: "center",
+                height: "calc(100% - 20px)",
                 background: isInactive ? "#b4b4b4" : isToday ? "#dfffd6" : isPast ? "#efefef" : "white",
             }}
             aria-hidden="true"
         >
-            {date ? date.getDate() : ""}
+            {!isInactive && (<>{date ? date.getDate() : ""}</>)}
         </div>
     );
 }

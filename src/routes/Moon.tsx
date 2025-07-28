@@ -21,8 +21,11 @@ export default function Moon() {
                 />
             </div>
         
+            {/* component opinionated in layout, but flexible in content.
+                renderDateBox is a clean contract for that flexibility. */}
             <Calendar 
                 date={date} 
+                onChangeDate={setDate}
                 renderDateBox={(cell, descriptionId) => (
                     <MoonBox
                         date={cell.date}

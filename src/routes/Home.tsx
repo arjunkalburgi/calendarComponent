@@ -20,7 +20,11 @@ export default function Home() {
                 />
             </div>
         
-            <Calendar date={date} />
+            {/* I made Calendar predictable and composable. The parent can now 
+                orchestrate other components around the selected date.
+                Can lift more logic out for extensibility.
+                This is also easier to test. */}
+            <Calendar onChangeDate={setDate} date={date} />
         </div>
     );
 }

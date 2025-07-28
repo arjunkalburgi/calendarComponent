@@ -1,38 +1,30 @@
 import { generateCalendarWeeks, type CalendarCell } from "./calendarUtls";
-import { useState, useEffect } from "react";
 import styles from "./Calendar.module.css";
 import DateBox from "./DateBox/DateBox";
 
 type CalendarProps = {
     date: Date;
+    onChangeDate: (newDate: Date) => void;
     renderDateBox?: (cell: CalendarCell, descriptionId: string) => React.ReactNode;
 };
 
-export default function Calendar({ date, renderDateBox }: CalendarProps) {
-    const [currentDate, setCurrentDate] = useState(date);
-    useEffect(() => {
-        setCurrentDate(date);
-    }, [date]);
-    const weeks = generateCalendarWeeks(currentDate.getFullYear(), currentDate.getMonth());
+export default function Calendar({ date, onChangeDate, renderDateBox }: CalendarProps) {
+    const weeks = generateCalendarWeeks(date.getFullYear(), date.getMonth());
 
     const goToPrevMonth = () => {
-        setCurrentDate(prev => {
-            const newDate = new Date(prev);
-            newDate.setMonth(prev.getMonth() - 1);
-            return newDate;
-        });
+        const newDate = new Date(date);
+        newDate.setMonth(date.getMonth() - 1);
+        onChangeDate(newDate);
     };
 
     const goToNextMonth = () => {
-        setCurrentDate(prev => {
-            const newDate = new Date(prev);
-            newDate.setMonth(prev.getMonth() + 1);
-            return newDate;
-        });
+        const newDate = new Date(date);
+        newDate.setMonth(date.getMonth() + 1);
+        onChangeDate(newDate);
     };
 
     const goToToday = () => {
-        setCurrentDate(new Date());
+        onChangeDate(new Date());
     };
     
     return (
@@ -42,7 +34,7 @@ export default function Calendar({ date, renderDateBox }: CalendarProps) {
                     &lt;
                 </button>
                 <h2 aria-live="polite">
-                    {currentDate.toLocaleString("default", { month: "long" })} {currentDate.getFullYear()}
+                    {date.toLocaleString("default", { month: "long" })} {date.getFullYear()}
                 </h2>
                 <button onClick={goToNextMonth} aria-label="Next month">
                     &gt;
@@ -56,6 +48,7 @@ export default function Calendar({ date, renderDateBox }: CalendarProps) {
                     <div key={i} role="row" className={styles.weekRow}>
                         {week.map((cell, j) => (
                             <div
+                                key={`${i}-${j}`}
                                 role="gridcell"
                                 aria-selected={cell.isToday}
                                 tabIndex={0}
@@ -67,7 +60,6 @@ export default function Calendar({ date, renderDateBox }: CalendarProps) {
                                     renderDateBox(cell, `date-${i}-${j}`)
                                 ) : (
                                     <DateBox
-                                        key={`${i}-${j}`}
                                         date={cell.date}
                                         isInactive={cell.isInactive}
                                         isToday={cell.isToday}

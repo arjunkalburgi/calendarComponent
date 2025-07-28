@@ -3,7 +3,10 @@ export type CalendarCell = {
     isInactive: boolean;
     isToday: boolean;
 };
-
+/**
+ * This has potential for memoization via useMemo in React.
+ * For now, it’s cheap enough and re-renders are limited to one level
+ */
 export function generateCalendarWeeks(year: number, month: number): CalendarCell[][] {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const firstDayOfWeek = new Date(year, month, 1).getDay();

@@ -1,6 +1,7 @@
 .moonBoxContainer {
     border: 1px solid #ccc;
     padding: 5px;
+    height: calc(100% - 10px);
     text-align: center;
     
     position: relative;
