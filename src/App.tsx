@@ -10,7 +10,7 @@ function AppRoutes() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/calendarComponent">
       <Tabs />
       <Suspense fallback={<div>Loading...</div>}>
         <AppRoutes />

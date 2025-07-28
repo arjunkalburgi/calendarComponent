@@ -1,11 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 
-export default defineConfig(({ mode }) => {
-  console.log("Vite mode:", mode); 
-
-  return {
+export default defineConfig({
     plugins: [react()],
-    base: mode === 'development' ? '/' : '/calendarComponent/',
-  };
+    base: '/calendarComponent/',
 });
