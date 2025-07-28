@@ -2,6 +2,23 @@
     text-align: start;
 }
 
+.calendarHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.calendarHeader h2 {
+    margin: 0 0.5rem;
+}
+
+.todayButton {
+    margin-left: auto;
+}
+
 .calendar {
     display: flex;
     flex-direction: column;

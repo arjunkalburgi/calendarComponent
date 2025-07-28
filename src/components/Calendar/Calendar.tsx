@@ -1,4 +1,5 @@
 import { generateCalendarWeeks, type CalendarCell } from "./calendarUtls";
+import { useState, useEffect } from "react";
 import styles from "./Calendar.module.css";
 import DateBox from "./DateBox/DateBox";
 
@@ -8,13 +9,48 @@ type CalendarProps = {
 };
 
 export default function Calendar({ date, renderDateBox }: CalendarProps) {
-    const weeks = generateCalendarWeeks(date.getFullYear(), date.getMonth());
+    const [currentDate, setCurrentDate] = useState(date);
+    useEffect(() => {
+        setCurrentDate(date);
+    }, [date]);
+    const weeks = generateCalendarWeeks(currentDate.getFullYear(), currentDate.getMonth());
+
+    const goToPrevMonth = () => {
+        setCurrentDate(prev => {
+            const newDate = new Date(prev);
+            newDate.setMonth(prev.getMonth() - 1);
+            return newDate;
+        });
+    };
+
+    const goToNextMonth = () => {
+        setCurrentDate(prev => {
+            const newDate = new Date(prev);
+            newDate.setMonth(prev.getMonth() + 1);
+            return newDate;
+        });
+    };
+
+    const goToToday = () => {
+        setCurrentDate(new Date());
+    };
     
     return (
         <div className={styles.calendarContainer}>
-            <h2>
-                {date.toLocaleString("default", { month: "long" })} {date.getFullYear()}
-            </h2>
+            <div className={styles.calendarHeader}>
+                <button onClick={goToPrevMonth} aria-label="Previous month">
+                    &lt;
+                </button>
+                <h2>
+                    {currentDate.toLocaleString("default", { month: "long" })} {currentDate.getFullYear()}
+                </h2>
+                <button onClick={goToNextMonth} aria-label="Next month">
+                    &gt;
+                </button>
+                <button onClick={goToToday} className={styles.todayButton}>
+                    Today
+                </button>
+            </div>
             <div className={styles.calendar}>
                 {weeks.map((week: CalendarCell[], i: number) => (
                     <div key={i} className={styles.weekRow}>
